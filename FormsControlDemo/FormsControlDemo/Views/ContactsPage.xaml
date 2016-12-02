@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="FormsControlDemo.Views.ContactsPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:converters="clr-namespace:FormsControlDemo.Converters;assembly=FormsControlDemo"
+             Title="連絡先"
+             BackgroundColor="#FCFCFC">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--<ListView x:Name="ContactsListView"
+              AbsoluteLayout.LayoutBounds="0,0,1,1"
+              AbsoluteLayout.LayoutFlags="All"
+              BackgroundColor="#FFEBEBEB"
+              CachingStrategy="RecycleElement"
+              HasUnevenRows="True"
+              IsGroupingEnabled="True"
+              IsPullToRefreshEnabled="True"
+              IsRefreshing="{Binding IsBusy,
+                                     Mode=OneWay}"
+              ItemsSource="{Binding SessionGroupList}"
+              RefreshCommand="{Binding RefreshCommand}">-->
+    <ListView x:Name="ContactsListView"
+              HasUnevenRows="true"
+              IsGroupingEnabled="True"
+              ItemSelected="ContactsListView_ItemSelected"
+              ItemsSource="{Binding SessionGroupList}">
+        <ListView.Effects>
+            <Effect x:FactoryMethod="Resolve">
+                <x:Arguments>
+                    <x:String>Xamarin.ListViewSelectionOnTopEffect</x:String>
+                </x:Arguments>
+            </Effect>
+        </ListView.Effects>
+        <ListView.SeparatorColor>
+            <OnPlatform x:TypeArguments="Color"
+                        WinPhone="{StaticResource ListSeparator}"
+                        iOS="{StaticResource ListSeparator}" />
+        </ListView.SeparatorColor>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid VerticalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <controls:CircleImage Margin="5"
+                                              Aspect="AspectFill"
+                                              BorderColor="{StaticResource AppThemeColor}"
+                                              BorderThickness="1"
+                                              HeightRequest="50"
+                                              HorizontalOptions="Center"
+                                              Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}}"
+                                              VerticalOptions="Center"
+                                              WidthRequest="50" />
+                        <Grid Grid.Column="1" VerticalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label FontAttributes="Bold"
+                                   FontSize="{StaticResource FontSizeMedium}"
+                                   Text="{Binding Name}"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Row="1"
+                                   FontSize="{StaticResource FontSizeMedium}"
+                                   Text="{Binding Phone}"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <ViewCell Height="20">
+                    <Label Margin="10,0,0,0"
+                           BackgroundColor="Transparent"
+                           FontSize="{StaticResource FontSizeMedium}"
+                           HorizontalOptions="Start"
+                           Text="{Binding FirstInitial}"
+                           TextColor="{StaticResource DarkText}"
+                           VerticalOptions="Center" />
+                </ViewCell>
+            </DataTemplate>
+        </ListView.GroupHeaderTemplate>
+    </ListView>
+</ContentPage>

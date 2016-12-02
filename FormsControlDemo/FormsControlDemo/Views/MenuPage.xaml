@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="FormsControlDemo.Views.MenuPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:FormsControlDemo.Converters;assembly=FormsControlDemo"
+             Title="Menu">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    Android="0,24,0,0"
+                    WinPhone="0"
+                    iOS="0,20,0,0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <ListView x:Name="listView"
+                  BackgroundColor="{StaticResource AppThemeColor}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  VerticalOptions="FillAndExpand">
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal">
+                    <Label Margin="15,10,10,10"
+                           FontSize="{StaticResource FontSizeMedium}"
+                           Text="FormsControlDemo"
+                           TextColor="{StaticResource LightText}" />
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Margin="5" Orientation="Horizontal">
+                                <StackLayout.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness"
+                                                Android="5"
+                                                WinPhone="5"
+                                                iOS="5,5,5,5" />
+                                </StackLayout.Padding>
+                                <Image Margin="5,0,0,0"
+                                       HeightRequest="30"
+                                       Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}}"
+                                       VerticalOptions="Center"
+                                       WidthRequest="30">
+                                    <Image.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double"
+                                                    Android="30"
+                                                    WinPhone="30"
+                                                    iOS="30" />
+                                    </Image.HeightRequest>
+                                    <Image.WidthRequest>
+                                        <OnPlatform x:TypeArguments="x:Double"
+                                                    Android="30"
+                                                    WinPhone="30"
+                                                    iOS="30" />
+                                    </Image.WidthRequest>
+                                </Image>
+                                <Label Margin="10,0,0,0"
+                                       Text="{Binding Title}"
+                                       TextColor="{StaticResource LightText}"
+                                       VerticalOptions="Center">
+                                    <Label.FontSize>
+                                        <OnPlatform x:TypeArguments="x:Double"
+                                                    Android="{StaticResource FontSizeSmall}"
+                                                    WinPhone="{StaticResource FontSizeSmall}"
+                                                    iOS="{StaticResource FontSizeMedium}" />
+                                    </Label.FontSize>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

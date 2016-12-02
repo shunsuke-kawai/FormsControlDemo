@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application x:Class="FormsControlDemo.App"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <!--  Color  -->
+            <Color x:Key="AppThemeColor">#009FE2</Color>
+            <Color x:Key="LightText">#FFFFFF</Color>
+            <Color x:Key="DarkText">#2C2C2C</Color>
+            <Color x:Key="BackColor">#FCFCFC</Color>
+            <Color x:Key="ListSeparator">#C8C7CC</Color>
+            <!--  Size  -->
+            <x:Double x:Key="FontSizeMicro">10</x:Double>
+            <x:Double x:Key="FontSizeSmall">14</x:Double>
+            <x:Double x:Key="FontSizeMedium">18</x:Double>
+            <x:Double x:Key="FontSizeLarge">22</x:Double>
+            <x:Double x:Key="TitleTextSize_Desktop">68</x:Double>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

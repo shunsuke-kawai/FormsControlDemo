@@ -48,9 +48,6 @@
     </Compile>
     <Compile Include="Converters\ImageConverters.cs" />
     <Compile Include="Extensions\ImageResourceExtensions.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\ContactsGroupModel.cs" />
     <Compile Include="Models\ContactsModel.cs" />
     <Compile Include="Models\MasterPageItemModel.cs" />
@@ -73,10 +70,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
